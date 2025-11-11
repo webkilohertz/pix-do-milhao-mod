@@ -1,1 +1,21 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pix do Milhão — Sorteio Diário</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <input type="text" id="avatarInput" maxlength="2" placeholder="🙂">
+  <div id="avatarDisplay"></div>
+
+  <h1>💸 Pix do Milhão — Sorteio Diário</h1>
+  <div id="timer"></div>
+  <div id="resultado"></div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
