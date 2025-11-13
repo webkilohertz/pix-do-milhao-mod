@@ -1,3 +1,4 @@
+
 const timerEl = document.getElementById("timer");
 const resultadoEl = document.getElementById("resultado");
 const avatarInput = document.getElementById("avatarInput");
@@ -18,18 +19,20 @@ function atualizarAvatar() {
   avatarInput.value = avatar;
 }
 avatarInput.addEventListener("input", () => {
-  const valor = avatarInput.value.trim().slice(0,2);
+  const valor = avatarInput.value.trim().slice(0, 2);
   salvar("avatar", valor || "🙂");
   atualizarAvatar();
 });
 
-// Sorteio diário
+// Sorteio diário de 6 números
 function novoSorteio() {
-  const numero = Math.floor(Math.random() * 100) + 1;
+  const dezenas = Array.from({ length: 6 }, () =>
+    Math.floor(Math.random() * 101)
+  );
   const hoje = new Date().toDateString();
   salvar("ultimoSorteio", hoje);
-  salvar("numeroSorteado", numero);
-  return numero;
+  salvar("numerosSorteados", dezenas);
+  return dezenas;
 }
 
 function verificarSorteio() {
@@ -38,7 +41,7 @@ function verificarSorteio() {
   if (ultimo !== hoje) {
     return novoSorteio();
   } else {
-    return ler("numeroSorteado");
+    return ler("numerosSorteados");
   }
 }
 
@@ -51,14 +54,17 @@ function tempoRestante() {
   const h = Math.floor(diff / (1000 * 60 * 60));
   const m = Math.floor((diff / (1000 * 60)) % 60);
   const s = Math.floor((diff / 1000) % 60);
-  return `${h.toString().padStart(2,"0")}:${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+  return `${h.toString().padStart(2, "0")}:${m
+    .toString()
+    .padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
 }
 
 function atualizar() {
-  const numero = verificarSorteio();
-  resultadoEl.textContent = `Resultado de hoje: ${numero}`;
-  timerEl.textContent = `Próximo sorteio em: ${tempoRestante()}`;
+  const numeros = verificarSorteio();
+  resultadoEl.textContent = `Resultado de hoje: ${numeros.join(" - ")}`;
+  timerEl.textContent = `⏰ Próximo sorteio em: ${tempoRestante()}`;
   atualizarAvatar();
 }
+
 setInterval(atualizar, 1000);
 atualizar();
