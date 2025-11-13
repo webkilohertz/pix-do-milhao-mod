@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,13 +8,18 @@
 </head>
 <body>
 
+  <!-- Campo do avatar -->
   <input type="text" id="avatarInput" maxlength="2" placeholder="🙂">
   <div id="avatarDisplay"></div>
 
-  <h1>💸 Pix do Milhão — Sorteio Diário</h1>
-  <div id="timer"></div>
-  <div id="resultado"></div>
+  <!-- Conteúdo principal -->
+  <main>
+    <h1>💸 Pix do Milhão — Sorteio Diário</h1>
+    <div id="timer"></div>
+    <div id="resultado"></div>
+  </main>
 
+  <!-- Script principal -->
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
