@@ -1,1 +1,34 @@
+body {
+  background-color: #000;
+  color: gold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 100px;
+}
+
+#avatarInput {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid gold;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+#timer {
+  font-size: 48px;
+  margin-top: 20px;
+}
+
+h3 {
+  color: gold;
+  font-size: 28px;
+  margin-top: 10px;
+}
 
